@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Details</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responcive.css">
+</head>
+<body>
+    <header>
+        <nav class="navigation_bar">
+            <div class="logo">
+                <img src="assects/home/logo.png" alt="logo img">
+            </div>
+            <ul type="none">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="#" class="nav-link">BLOG</a></li>
+                <li><a href="services.html" class="nav-link active">SERVICES</a></li>
+                <li><a href="contactus.html" class="nav-link">CONTACT US</a></li>
+                <a href="contactus.html" class="btn">GET A FREE CONSULTATION</a>
+            </ul>
+            <i class="bi bi-list" id="menu"></i>
+        </nav>
+    </header>
+    <main class="main">
+        <section id="service-detail"></section>
+    </main>
+    <hr>
+    <footer class="footer">
+        <img src="assects/home/logo.png" alt="logo img">
+        <ul type="none">
+            <li>Quick Links</li>
+            <li><a href="#" class="nav-link active">HOME</a></li>
+            <li><a href="#" class="nav-link">BLOG</a></li>
+            <li><a href="#" class="nav-link">SERVICES</a></li>
+            <li><a href="#" class="nav-link">CONTACT US</a></li>
+        </ul>
+        <a href="contactus.html" class="btn">GET A FREE CONSULTATION</a>
+    </footer>
+    <script>
+    // Get id from query string
+    function getServiceId() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('id');
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+        const id = getServiceId();
+        fetch('js/service.json')
+            .then(res => res.json())
+            .then(services => {
+                const service = services.find(s => s.id === id);
+                const detail = document.getElementById('service-detail');
+                if (!service) {
+                    detail.innerHTML = '<p style="color:red">Service not found.</p>';
+                    return;
+                }
+                detail.innerHTML = `
+                    <div class="service-detail-container">
+                        <img src="${service.image}" alt="${service.title}" class="service-detail-img" />
+                        <h2 class="service-detail-title">${service.title}</h2>
+                        <h3 class="service-detail-heading"">What is ${service.title}?</h3>
+                        <p class="service-detail-what" ">${service.what_is}</p>
+                        <h3 style="color: var(--orange);">Our Approach</h3>
+                        <ul class="service-detail-approach">
+                            ${service.approach.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                        <h3><span class="service-detail-why-title" style="color: var(--orange);">Why Choose Us for ${service.title}?</span></h3>
+                        <ul class="service-detail-why">
+                            ${service.why_choose_us.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            })
+            .catch(err => {
+                document.getElementById('service-detail').innerHTML = '<p style="color:red">Failed to load service details.</p>';
+                console.error(err);
+            });
+    });
+    </script>
+</body>
+</html>

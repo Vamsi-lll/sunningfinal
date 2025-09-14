@@ -1,0 +1,391 @@
+/* ================= Service Detail Responsive ================= */
+@media (max-width: 900px) {
+  .service-detail-container {
+    max-width: 98vw;
+    padding: 18px 8px;
+    margin: 24px auto;
+  }
+  .service-detail-img {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 10px;
+  }
+  .service-detail-title {
+    font-size: 1.2em;
+  }
+  .service-detail-heading {
+    font-size: 1em;
+  }
+  .service-detail-what {
+    font-size: 0.98em;
+  }
+  .service-detail-approach, .service-detail-why {
+    font-size: 0.98em;
+    padding-left: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .service-detail-container {
+    padding: 8px 2px;
+    margin: 10px auto;
+    border-radius: 8px;
+  }
+  .service-detail-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 8px;
+  }
+  .service-detail-title {
+    font-size: 1em;
+  }
+  .service-detail-heading {
+    font-size: 0.95em;
+  }
+  .service-detail-what {
+    font-size: 0.92em;
+  }
+  .service-detail-approach, .service-detail-why {
+    font-size: 0.92em;
+    padding-left: 6px;
+  }
+}
+/* ================= Services Banner Responsive ================= */
+@media (max-width: 900px) {
+  .services-banner {
+    height: 38vh;
+    min-height: 180px;
+    max-height: 300px;
+    margin-bottom: 24px;
+  }
+  .services-banner-content h1 {
+    font-size: 1.5em;
+  }
+  .services-banner-content p {
+    font-size: 1em;
+    margin-bottom: 18px;
+  }
+  .services-banner-content .btn {
+    font-size: 1em;
+    padding: 12px 22px;
+  }
+}
+@media (max-width: 600px) {
+  .services-banner {
+    height: 26vh;
+    min-height: 110px;
+    max-height: 180px;
+    margin-bottom: 12px;
+  }
+  .services-banner-content h1 {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+  }
+  .services-banner-content p {
+    font-size: 0.95em;
+    margin-bottom: 10px;
+  }
+  .services-banner-content .btn {
+    font-size: 0.95em;
+    padding: 8px 12px;
+  }
+}
+/* ================= Service Card Responsive ================= */
+@media (max-width: 900px) {
+  .service-card-row {
+    flex-direction: column;
+    width: 98%;
+    min-height: unset;
+    gap: 0;
+  }
+  .service-card-img-col {
+    flex: none;
+    border-radius: 18px 18px 0 0;
+    min-height: 180px;
+    max-height: 220px;
+  }
+  .service-img {
+    max-width: 100%;
+    min-height: 180px;
+    max-height: 220px;
+    border-radius: 18px 18px 0 0;
+  }
+  .service-card-content-col {
+    padding: 20px 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .service-card-row {
+    width: 100%;
+    margin: 24px 0;
+    border-radius: 10px;
+  }
+  .service-card-img-col {
+    min-height: 120px;
+    max-height: 150px;
+    border-radius: 10px 10px 0 0;
+  }
+  .service-img {
+    min-height: 120px;
+    max-height: 150px;
+    border-radius: 10px 10px 0 0;
+  }
+  .service-card-content-col {
+    padding: 12px 8px;
+    gap: 8px;
+  }
+  .service-title {
+    font-size: 1.1em;
+  }
+  .service-heading {
+    font-size: 1em;
+  }
+  .service-btn {
+    font-size: 0.95em;
+    padding: 10px 18px;
+  }
+}
+/* Responsive styles for rating section */
+@media (max-width: 1024px) {
+  .rating-section {
+    width: 98%;
+  }
+  .rating-content {
+    min-width: 350px;
+    height: 180px;
+  }
+}
+@media (max-width: 700px) {
+  .rating {
+    flex-direction: column;
+    width: 98%;
+    gap: 10px;
+  }
+  .rating-section {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .rating-slider-vertical {
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto;
+  }
+  .rating-content {
+    min-width: 0;
+    width: 100%;
+    height: 120px;
+    font-size: 0.98em;
+    padding: 8px 2px;
+  }
+  .rating-prev {
+    height: 90px;
+  }
+}
+/* Rating slider responsive styles */
+@media (max-width: 700px) {
+  .rating-section {
+    padding: 0 4px;
+  }
+  .rating-slider {
+    gap: 8px;
+  }
+  .rating-card {
+    padding: 14px 6px 10px 6px;
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  .rating-nav {
+    width: 28px;
+    height: 28px;
+  }
+  .rating-content{
+    width: 400px;
+  }
+}
+/* Calendar responsive styles */
+@media (max-width: 700px) {
+  .calendar-box {
+    padding: 14px 4px 10px 4px;
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  .calendar-header {
+    margin-bottom: 8px;
+  }
+  .calendar-days-row, .calendar-grid {
+    font-size: 0.95em;
+  }
+  .calendar-cell {
+    padding: 7px 0;
+    font-size: 0.98em;
+    border-radius: 5px;
+  }
+  .calendar-nav {
+    width: 28px;
+    height: 28px;
+    font-size: 1em;
+  }
+  .booking_con{
+    width: 90%;
+    text-align: center;
+  }
+}
+/* FAQ responsive styles */
+@media (max-width: 700px) {
+  .faq-section {
+    padding: 0 4px;
+  }
+  .faq-question-row, .faq-answer {
+    padding: 14px 10px;
+    font-size: 0.98em;
+  }
+  .faq-toggle-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 1.1em;
+  }
+  .faq-box {
+    border-radius: 10px;
+  }
+}
+/* Marquee image responsive styles */
+@media (max-width: 1024px) {
+  .markq_img {
+    width: 220px;
+    height: 320px;
+    border-radius: 40px;
+    margin-top: 24px;
+  }
+}
+@media (max-width: 700px) {
+  .markq_img {
+    width: 120px;
+    height: 180px;
+    border-radius: 20px;
+    margin-top: 12px;
+  }
+  .marquee-wrapper {
+    gap: 12px;
+  }
+}
+/*============================================*/
+/*        Extra Small Devices (phones)        */
+/*        max-width: 600px                    */
+/*============================================*/
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+  .navigation_bar{
+    padding:0px 10px;
+    
+  }
+  .navigation_bar ul{
+    display: none;
+  }
+  .navigation_bar i{
+    display: block;
+  }
+  .navigation_bar img{
+    height: 70px;
+  }
+  /* --------------------------------------footer----------------------------------- */
+  .footer{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .flex img{
+    height: 120px;
+  }
+    .flex div{
+    width: 90%;
+    text-align: justify;
+}
+}
+
+/*============================================*/
+/*     Small Devices (tablets & large phones) */
+/*     min-width: 601px and max-width: 768px  */
+/*============================================*/
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+  .navigation_bar i{
+    display: block;
+  }
+    .navigation_bar ul {
+    display: none;
+  }
+
+  .navigation_bar i {
+    display: block;
+    cursor: pointer;
+  }
+  .flex div{
+    width: 90%;
+}
+}
+
+/*============================================*/
+/*     Medium Devices (landscape tablets)     */
+/*     min-width: 769px and max-width: 992px  */
+/*============================================*/
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+  body {
+    font-size: 16px;
+  }
+  
+}
+
+/*============================================*/
+/*     Large Devices (laptops/desktops)       */
+/*     min-width: 993px and max-width: 1200px */
+/*============================================*/
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+  body {
+    font-size: 17px;
+  }
+  
+}
+
+/*============================================*/
+/*     Extra Large Devices (large desktops)   */
+/*     min-width: 1201px                      */
+/*============================================*/
+@media only screen and (min-width: 1201px) {
+  body {
+    font-size: 18px;
+  }
+  
+}
+
+
+/* others */
+
+@media (max-width: 1024px) {
+    .what-we-do-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 700px) {
+    .what-we-do-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    .what-we-do-card {
+        padding: 16px 8px;
+    }
+    .what-we-do-inner {
+        gap: 10px;
+    }
+    .what-we-do-img {
+        width: 54px;
+        height: 54px;
+    }
+    .what-we-do-img img {
+        max-width: 36px;
+        max-height: 36px;
+    }
+}

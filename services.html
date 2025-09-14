@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>title</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responcive.css">
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navigation_bar">
+            <div class="logo">
+                <img src="assects/home/logo.png" alt="logo img">
+            </div>
+            <ul type="none">
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="#" class="nav-link">BLOG</a></li>
+                <li><a href="services.html" class="nav-link">SERVICES</a></li>
+                <li><a href="contactus.html" class="nav-link active">CONTACT US</a></li>
+                <a href="contactus.html" class="btn">GET A FREE CONSULTATION</a>
+            </ul>
+            <i class="bi bi-list" id="menu"></i>
+        </nav>
+        <!-- for mobile view -->
+         <section class="sider hidden">
+            <ul type="none">
+                <li><a href="#" class="nav-link active">HOME</a></li>
+                <li><a href="#" class="nav-link">BLOG</a></li>
+                <li><a href="#" class="nav-link">SERVICES</a></li>
+                <li><a href="#" class="nav-link">CONTACT US</a></li>
+            </ul>
+            <a href="contactus.html" class="btn" style="font-size: 10px;">GET A FREE CONSULTATION</a>
+         </section>
+    </header>
+    <!-- -----------------------------------main--------------------------------------- -->
+    <main class="main">
+            <section class="services-banner">
+                <div class="services-banner-bg"></div>
+                <div class="services-banner-content">
+                    <h1>Digital Marketing, Built for You</h1>
+                    <p>Explore our services designed to connect, engage, and grow your business</p>
+                    <a href="contactus.html" class="btn">GET FREE CONSULTATION</a>
+                </div>
+            </section>
+            <section id="service"></section>
+    </main>
+    <!-- -------------------------------end main--------------------------------------- -->
+    <!-- ----------------------------------footer--------------------------------------- -->
+     <hr>
+    <footer class="footer">
+        <img src="assects/home/logo.png" alt="logo img">
+        <ul type="none">
+            <li>Quick Links</li>
+            <li><a href="#" class="nav-link active">HOME</a></li>
+            <li><a href="#" class="nav-link">BLOG</a></li>
+            <li><a href="#" class="nav-link">SERVICES</a></li>
+            <li><a href="#" class="nav-link">CONTACT US</a></li>
+        </ul>
+    <a href="contactus.html" class="btn">GET A FREE CONSULTATION</a>
+    </footer>
+    <!-- -------------------------------end footer-------------------------------------- -->
+     
+    <script type="module" src="js/script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('js/service.json')
+            .then(res => res.json())
+            .then(services => {
+                const serviceSection = document.getElementById('service');
+                if (!serviceSection) return;
+                                serviceSection.innerHTML = services.map(service => `
+                                    <div class="service-card-row">
+                                        <div class="service-card-img-col">
+                                            <img src="${service.image}" alt="${service.title}" class="service-img" />
+                                        </div>
+                                        <div class="service-card-content-col">
+                                            <h2 class="service-title">${service.title}</h2>
+                                            <h3 class="service-heading">${service.heading}</h3>
+                                            <p class="service-intro">${service.intro}</p>
+                                            <a href="service-detail.html?id=${service.id}" class="btn service-btn">Know More</a>
+                                        </div>
+                                    </div>
+                                `).join('');
+            })
+            .catch(err => {
+                document.getElementById('service').innerHTML = '<p style="color:red">Failed to load services.</p>';
+                console.error(err);
+            });
+    });
+    </script>
+</body>
+</html>
