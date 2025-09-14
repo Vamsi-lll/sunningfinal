@@ -1,3 +1,60 @@
+
+// Animated numbers: trigger only when visible
+window.addEventListener('DOMContentLoaded', function() {
+    function animateNumber({el, from = 0, to, duration = 1500, format, done}) {
+        let start = null;
+        let rafId;
+        function step(ts) {
+            if (!start) start = ts;
+            let progress = Math.min((ts - start) / duration, 1);
+            let value = from + (to - from) * progress;
+            el.textContent = format ? format(value, progress) : Math.floor(value);
+            if (progress < 1) {
+                rafId = requestAnimationFrame(step);
+            } else if (done) {
+                done();
+            }
+        }
+        rafId = requestAnimationFrame(step);
+        return () => cancelAnimationFrame(rafId);
+    }
+
+    function observeAndAnimate(selector, opts) {
+        const el = document.querySelector(selector);
+        if (!el) return;
+        let animated = false;
+        const observer = new window.IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !animated) {
+                animated = true;
+                animateNumber({el, ...opts});
+                observer.disconnect();
+            }
+        }, { threshold: 0.5 });
+        observer.observe(el);
+    }
+
+    // VIEWS: 1 to 150+
+    observeAndAnimate('.views-animated-number', {
+        from: 1,
+        to: 150,
+        duration: 1800,
+        format: (v, p) => p < 1 ? Math.floor(v) : '150K+',
+    });
+    // IMPRESSIONS: 1 to 1M+
+    observeAndAnimate('.impressions-animated-number', {
+        from: 1,
+        to: 1000000,
+        duration: 1800,
+        format: (v, p) => p < 1 ? Math.floor(v).toLocaleString() : '1M+',
+    });
+    // RATING: 0 to 4.9/5
+    observeAndAnimate('.rating-animated-number', {
+        from: 0,
+        to: 4.9,
+        duration: 1200,
+        format: (v, p) => p < 1 ? (v).toFixed(1) + '/5' : '4.9/5',
+    });
+});
 // Rating Section Mapping and Navigation
 window.addEventListener('DOMContentLoaded', function() {
     const reviews = [
