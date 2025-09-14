@@ -1,3 +1,24 @@
+/* Animated numbers for Impressions and Rating */
+.impressions-animated-number,
+.rating-animated-number {
+    display: block;
+    color: #fff;
+    font-size: 4rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 0.2em;
+    letter-spacing: 2px;
+}
+/* Animated number for VIEWS */
+.views-animated-number {
+    display: block;
+    color: #fff;
+    font-size: 4rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 0.2em;
+    letter-spacing: 2px;
+}
 
 
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
@@ -9,6 +30,7 @@
     --myfont:'Poppins', sans-serif;
     --orange:#FF8036;
     --gray:#1E1E1E;
+    --my-black:#272727;
     
 }
 
@@ -92,11 +114,15 @@ hr{
     box-sizing: border-box;
 }
 .backgrounds3{
-    background-image: url('../assects/banners/home_page_banner 1.svg');
+    position: relative;
     height: 70vh;
     width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(120deg, rgba(255,128,54,0.55) 0%, rgba(0,0,0,0.55) 100%), url('../assects/banners/home_page_banner 1.svg') center/cover no-repeat;
+    background-blend-mode: darken;
+    overflow: hidden;
 }
 .main{
     margin-top: 120px;
@@ -265,12 +291,41 @@ hr{
     align-items: center;
     width: 100%;
     box-sizing: border-box;
+    background-color: var(--my-black);
+    color: white;
 }
 .footer img{
     height: 120px;
     width: auto;
+    
 }
-
+.f-link{
+    color: white;
+}
+.f-links{
+    color: var(--orange);
+    text-decoration: none;
+}
+.f-c2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+}
+.f-btn{
+    height: auto;
+    width: auto;
+    background-color: var(--orange);
+    border-radius: 25px;
+    text-decoration: none;
+    padding: 10px;
+    color: white;
+    font-family: var(--myfont);
+    font-weight: 700;
+    box-sizing: border-box;
+}
 /* ================================================================================================= */
 /*                                               index                                               */
 /* ================================================================================================= */
@@ -583,6 +638,8 @@ hr{
 }
 .contact{
     display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
@@ -590,7 +647,14 @@ hr{
     margin: 20px 0px 50px 0px;
 
 }
-
+.flex-contact{
+    display: flex;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.332);
+    height: auto;
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding: 30px;
+}
 .rating-name{
     color: var(--orange);
     font-weight: 700;
@@ -617,16 +681,7 @@ hr{
     opacity: 1;
     transition: opacity 0.4s;
 }
-.backgrounds3 {
-    position: relative;
-    min-height: 300px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: radial-gradient(circle at center, #FF8036 60%, #000 100%);
-    overflow: hidden;
-}
+/* Duplicate .backgrounds3 rule removed. The correct rule is above. */
 .backgrounds3-content {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -805,4 +860,20 @@ hr{
     color: #fff;
     font-weight: 700;
     box-shadow: 0 2px 12px rgba(255,128,54,0.13);
+}
+
+.track_record{
+    background-color: var(--orange);
+    width: 100%;
+    min-height: 10vh;
+    max-height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+.track_section{
+    width: 400px;
 }
