@@ -258,12 +258,15 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 });
 const our_portfolio_images=[
-    'assects/home/Vector.png',
-    'assects/home/pay-per-click-svgrepo-com 2.png',
-    'assects/home/Group.svg',
-    'assects/home/content-marketing-management-seo-svgrepo-com 1.png',
-    'assects/home/pay-per-click-svgrepo-com 2.png',
-    'assects/home/laptop-web-development-svgrepo-com 1.png'
+    "assects/banners/portfolio1.jpg",
+    "assects/banners/portfolio2.jpg",
+    "assects/banners/portfolio3.jpg",
+    "assects/banners/portfolio4.jpg",
+    "assects/banners/portfolio5.jpg",
+    "assects/banners/portfolio6.jpg",
+    "assects/banners/portfolio7.jpg",
+    "assects/banners/portfolio8.jpg",
+    "assects/banners/portfolio9.jpg",
 ];
 
 
