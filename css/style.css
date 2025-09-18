@@ -87,7 +87,7 @@ hr{
     background-image: url('../assects/home/home_bg2.png');
     background-size: 350px 350px; /* Small image size */
     background-repeat: repeat;
-    background-color: rgba(255,255,255,0.6); /* Light overlay */
+    background-color: rgba(255, 255, 255, 0.353); /* Light overlay */
     background-blend-mode: lighten;
     background-position: top center;
     box-sizing: border-box;
@@ -633,6 +633,8 @@ hr{
     border-radius: 15px;
     box-sizing: border-box;
     padding: 30px;
+    gap: 20px;
+    align-items: center;
 }
 .rating-name{
     color: var(--orange);
