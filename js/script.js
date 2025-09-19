@@ -1,4 +1,29 @@
 
+
+// Render our_values as cards in .ourvalue
+window.addEventListener('DOMContentLoaded', function() {
+    const valuesContainer = document.querySelector('.ourvalue');
+    if (valuesContainer && Array.isArray(our_values)) {
+        let html = '<div class="ourvalue-row">';
+        our_values.forEach((item, idx) => {
+            const bg = idx % 2 === 0 ? 'ourvalue-card-orange' : 'ourvalue-card-black';
+            html += `
+                <div class="ourvalue-card ${bg}">
+                    <div class="ourvalue-content">
+                        <h3>${item.head}</h3>
+                        <p>${item.p}</p>
+                    </div>
+                    <div class="ourvalue-img">
+                        <img src="${item.img}" alt="${item.head}" />
+                    </div>
+                </div>
+            `;
+        });
+        html += '</div>';
+        valuesContainer.innerHTML = html;
+    }
+});
+
 // Animated numbers: trigger only when visible
 window.addEventListener('DOMContentLoaded', function() {
     function animateNumber({el, from = 0, to, duration = 1500, format, done}) {
@@ -130,6 +155,27 @@ window.addEventListener('DOMContentLoaded', function() {
     let currentMonth = today.getMonth();
     let currentYear = today.getFullYear();
 
+    // Helper: format date as YYYY-MM-DD
+    function formatDate(year, month, day) {
+        return year + '-' + String(month + 1).padStart(2, '0') + '-' + String(day).padStart(2, '0');
+    }
+
+    // Helper: show error message
+    function showCalendarError(msg) {
+        let err = calendarContainer.querySelector('.calendar-error');
+        if (!err) {
+            err = document.createElement('div');
+            err.className = 'calendar-error';
+            err.style.cssText = 'color: red; margin-top: 8px; font-size: 1em;';
+            calendarContainer.appendChild(err);
+        }
+        err.textContent = msg;
+    }
+    function clearCalendarError() {
+        let err = calendarContainer.querySelector('.calendar-error');
+        if (err) err.remove();
+    }
+
     function renderCalendar(month, year) {
         // Get first day of the month
         const firstDay = new Date(year, month, 1).getDay();
@@ -154,12 +200,16 @@ window.addEventListener('DOMContentLoaded', function() {
         for (let i = 0; i < startDay; i++) {
             html += `<span class="calendar-cell empty"></span>`;
         }
+
         // Fill days
         for (let d = 1; d <= daysInMonth; d++) {
             const isToday = d === today.getDate() && month === today.getMonth() && year === today.getFullYear();
             html += `<span class="calendar-cell${isToday ? ' today' : ''}" data-day="${d}">${d}</span>`;
         }
-        html += `</div></div>`;
+        html += `</div>`;
+        // Add action button
+        html += `<button class="calendar-mail-btn" style="margin-top:10px;padding:8px 18px;background:var(--orange);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600;">Book Consultation</button>`;
+        html += `</div>`;
         calendarContainer.innerHTML = html;
 
         // Add navigation
@@ -180,9 +230,35 @@ window.addEventListener('DOMContentLoaded', function() {
                 cell.onclick = function() {
                     calendarContainer.querySelectorAll('.calendar-cell.selected').forEach(c => c.classList.remove('selected'));
                     cell.classList.add('selected');
+                    clearCalendarError();
                 };
             }
         });
+
+        // Add mail button logic
+        const mailBtn = calendarContainer.querySelector('.calendar-mail-btn');
+        mailBtn.onclick = function() {
+            clearCalendarError();
+            const selected = calendarContainer.querySelector('.calendar-cell.selected');
+            if (!selected) {
+                showCalendarError('Please select a date.');
+                return;
+            }
+            const day = parseInt(selected.getAttribute('data-day'), 10);
+            const selectedDate = new Date(currentYear, currentMonth, day);
+            // Remove time for comparison
+            selectedDate.setHours(0,0,0,0);
+            const now = new Date();
+            now.setHours(0,0,0,0);
+            if (selectedDate < now) {
+                showCalendarError('Please select a valid (future) date.');
+                return;
+            }
+            // Open mail client
+            const subject = encodeURIComponent('Consultation Booking for ' + formatDate(currentYear, currentMonth, day));
+            const mailto = `mailto:sunningyourway@gmail.com?subject=${subject}`;
+            window.location.href = mailto;
+        };
     }
 
     renderCalendar(currentMonth, currentYear);
@@ -317,7 +393,7 @@ window.addEventListener('DOMContentLoaded', function() {
                         <div class="what-we-do-content">
                             <h3>${item.hedding}</h3>
                             <p>${item.passage}</p>
-                            <button class="btn btn2">Learn More</button>
+                            <button class="btn btn2"><a href="services.html">Read More</a></button>
                         </div>
                     </div>
                 </div>
@@ -331,32 +407,32 @@ window.addEventListener('DOMContentLoaded', function() {
 
 const what_we_do_data = [
     {
-        icon_img:'assects/home/Vector.png',
+        icon_img:'assects/home/seo 1.svg',
         hedding: 'Search Engine Optimization (SEO)',
         passage: 'Increase visibility and rank higher on Google with proven SEO strategies.'
     },
     {
-        icon_img: 'assects/home/pay-per-click-svgrepo-com 2.png',
+        icon_img: 'assects/home/ppc 1.svg',
         hedding: 'Pay-Per-Click Advertising (PPC)',
         passage: 'Run targeted ad campaigns that deliver instant leads and conversions.'
     },
     {
-        icon_img: 'assects/home/Group.svg',
+        icon_img: 'assects/home/social_media_mariketing 1.svg',
         hedding: 'Social Media Marketing',
         passage: 'Engage your audience and grow your brand across major social platforms.'
     },
     {
-        icon_img: 'assects/home/content-marketing-management-seo-svgrepo-com 1.png',
+        icon_img: 'assects/home/content_marketing 1.svg',
         hedding: 'Content Marketing',
         passage: 'Create impactful blogs, videos, and stories that attract and convert'
     },
     {
-        icon_img: 'assects/home/pay-per-click-svgrepo-com 2.png',
+        icon_img: 'assects/home/email_marketing 1.svg',
         hedding: 'Email Marketing & Automation',
         passage: 'Reach the right people at the right time with personalized campaigns.'
     },
     {
-        icon_img: 'assects/home/laptop-web-development-svgrepo-com 1.png',
+        icon_img: 'assects/home/website_design_development 1.svg',
         hedding: 'Website Design & Development',
         passage: 'Build fast, modern, and user-friendly websites that drive results.'
     }
@@ -411,3 +487,36 @@ reviews = [
 
 
 
+const our_values=[
+    {
+        "head":"Partnerships",
+        "p":"Our focus is on creating long-term relationships that grow with your success",
+        "img":"assects/about_us/partnership 1.svg"
+    },
+    {
+        "head":"Open Communication",
+        "p":"We believe clear communication is the key to effective teamwork and growth",
+        "img":"assects/about_us/communication 1.svg"
+    },
+    {
+        "head":"Honesty and Transparency",
+        "p":"Every decision we make is guided by what’s best for our client",
+        "img":"assects/about_us/transperacy 1.svg"
+    },
+    {
+        "head":"Innovation and Adaptability",
+        "p":"Our team thrives on finding solutions and turning challenges into opportunities",
+        "img":"assects/about_us/innovation 1.svg"
+    },
+    {
+        "head":"Fidelity",
+        "p":"With Sunning Your Way by your side, you can count on steadfast loyalty and support at every step",
+        "img":"assects/about_us/fiedelity 1.svg"
+    },
+    {
+        "head":"Growth",
+        "p":"We believe growth is a shared journey—strengthening ourselves, our team, and our clients along the way",
+        "img":"assects/about_us/growth 1.svg"
+    },
+    
+]
